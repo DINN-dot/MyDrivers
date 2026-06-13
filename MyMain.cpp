@@ -1,9 +1,18 @@
 #include <MyMain.h>
-#include "stm32f401xe.h"
+#include <MyStm32F401xxx.hpp>
 
 
-void main(void)
+void myMain(void)
 {
 
-
+    RCC->AHB1ENR    |=  0b1<<1;
+    GPIOB->MODER    &=  ~(0b1<<24);
+    GPIOB->MODER    |=  (0b1<<24);
+    GPIOB->BSRR     |=  0b1<<12*2;
 };
+
+
+void SystemInit(void)
+{
+
+}

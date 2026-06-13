@@ -5,13 +5,20 @@
 
 
 
+
+
+#ifdef __cplusplus
 extern "C"
 {
+#endif
+    
+void myMain(void);
+void SystemInit(void);
 
-void main()
-
-
+#ifdef __cplusplus
 }
+#endif
+
 
 
 #endif  //__MYMAIN_H
