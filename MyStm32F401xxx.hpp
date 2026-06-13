@@ -1,3 +1,4 @@
+#include <stdint.h>
 
 //AHB1
 const uint32_t GPIOA_BASE_ADDRESS       =(0x40020000);
@@ -48,38 +49,61 @@ const uint32_t TIM11_BASE_ADDRESS       =(0x40014800);
 
 struct RccStruct
 {
-    uint32_t RCC_CR;
-    uint32_t RCC_PLLCFGR;
-    uint32_t RCC_CFGR;
-    uint32_t RCC_CIR;
-    uint32_t RCC_AHB1RSTR;
-    uint32_t RCC_AHB2RSRT;
+    uint32_t CR;
+    uint32_t PLLCFGR;
+    uint32_t CFGR;
+    uint32_t CIR;
+    uint32_t AHB1RSTR;
+    uint32_t AHB2RSRT;
     uint32_t RESERVED0;
     uint32_t RESERVED1;
-    uint32_t RCC_APB1RSTR;
-    uint32_t RCC_APB2RSTR;
+    uint32_t APB1RSTR;
+    uint32_t APB2RSTR;
     uint32_t RESERVED2;
     uint32_t RESERVED3;
-    uint32_t RCC_AHB1ENR;
-    uint32_t RCC_AHB2ENR;
+    uint32_t AHB1ENR;
+    uint32_t AHB2ENR;
     uint32_t RESERVED4;
     uint32_t RESERVED5;
-    uint32_t RCC_APB1ENR;
-    uint32_t RCC_APB2ENR;
+    uint32_t APB1ENR;
+    uint32_t APB2ENR;
     uint32_t RESERVED6;
     uint32_t RESERVED7;
-    uint32_t RCC_AHB1LPENR;
-    uint32_t RCC_AHB2LPENR;
+    uint32_t AHB1LPENR;
+    uint32_t AHB2LPENR;
     uint32_t RESERVED8;
     uint32_t RESERVED9;
-    uint32_t RCC_APB1LPENR;
-    uint32_t RCC_APB2LPENR;
+    uint32_t APB1LPENR;
+    uint32_t APB2LPENR;
     uint32_t RESERVED10;
     uint32_t RESERVED11;
-    uint32_t RCC_BDCR;
-    uint32_t RCC_CSR;
+    uint32_t BDCR;
+    uint32_t CSR;
     uint32_t RESERVED12;
     uint32_t RESERVED13;
-    uint32_t RCC_SSCGR;
-    uint32_t RCC_PLLI2SCFGR;
-}
+    uint32_t SSCGR;
+    uint32_t PLLI2SCFGR;
+};
+
+RccStruct * const RCC = reinterpret_cast<RccStruct*>(RCC_BASE_ADDRESS);
+//GPIO
+struct GpioStruct
+{
+    uint32_t MODER;
+    uint32_t OTYPER;
+    uint32_t OSPEEDR;
+    uint32_t PUPDR;
+    uint32_t IDR;
+    uint32_t ODR;
+    uint32_t BSRR;
+    uint32_t LCKR;
+    uint32_t AFLR;
+    uint32_t AFHR;
+};
+
+GpioStruct * const GPIOA = reinterpret_cast<GpioStruct*>(GPIOA_BASE_ADDRESS);
+GpioStruct * const GPIOB = reinterpret_cast<GpioStruct*>(GPIOB_BASE_ADDRESS);
+GpioStruct * const GPIOC = reinterpret_cast<GpioStruct*>(GPIOC_BASE_ADDRESS);
+GpioStruct * const GPIOD = reinterpret_cast<GpioStruct*>(GPIOD_BASE_ADDRESS);
+GpioStruct * const GPIOE = reinterpret_cast<GpioStruct*>(GPIOE_BASE_ADDRESS);
+GpioStruct * const GPIOH = reinterpret_cast<GpioStruct*>(GPIOH_BASE_ADDRESS);
