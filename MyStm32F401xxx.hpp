@@ -1,5 +1,13 @@
 #include <stdint.h>
 
+//ARM-Cortex Address
+//ICR
+const uint32_t ICTR_BASE_ADDRESS            =(0xE000E004);
+const uint32_t NVIC_ISER_0_7_BASE_ADDRESS   =(0xE000E100);
+const uint32_t NVIC_ISPR_0_7_BASE_ADDRESS   =(0xE000E200);
+const uint32_t NVIC_ICPR_0_7_BASE_ADDRESS   =(0xE000E280);
+const uint32_t NVIC_IABR_0_7_BASE_ADDRESS   =(0xE000E300);
+const uint32_t NVIC_IPR_0_7_BASE_ADDRESS    =(0xE000E400);
 //AHB1
 const uint32_t GPIOA_BASE_ADDRESS       =(0x40020000);
 const uint32_t GPIOB_BASE_ADDRESS       =(0x40020400);
@@ -44,9 +52,76 @@ const uint32_t TIM9_BASE_ADDRESS        =(0x40014000);
 const uint32_t TIM10_BASE_ADDRESS       =(0x40014400);
 const uint32_t TIM11_BASE_ADDRESS       =(0x40014800);
 
-
 //Structs
+//ARM 
+struct ArmNvicIserStruct
+{
+    uint32_t ARM_NVIC_ISER_0;
+    uint32_t ARM_NVIC_ISER_1;
+    uint32_t ARM_NVIC_ISER_2;
+    uint32_t ARM_NVIC_ISER_3;
+    uint32_t ARM_NVIC_ISER_4;
+    uint32_t ARM_NVIC_ISER_5;
+    uint32_t ARM_NVIC_ISER_6;
+    uint32_t ARM_NVIC_ISER_7;
+};
+struct ArmNvicIsprStruct
+{
+    uint32_t ARM_NVIC_ISPR_0;
+    uint32_t ARM_NVIC_ISPR_1;
+    uint32_t ARM_NVIC_ISPR_2;
+    uint32_t ARM_NVIC_ISPR_3;
+    uint32_t ARM_NVIC_ISPR_4;
+    uint32_t ARM_NVIC_ISPR_5;
+    uint32_t ARM_NVIC_ISPR_6;
+    uint32_t ARM_NVIC_ISPR_7;
+};
 
+struct ArmNvicIcprStruct
+{
+    uint32_t ARM_NVIC_ICPR_0;
+    uint32_t ARM_NVIC_ICPR_1;
+    uint32_t ARM_NVIC_ICPR_2;
+    uint32_t ARM_NVIC_ICPR_3;
+    uint32_t ARM_NVIC_ICPR_4;
+    uint32_t ARM_NVIC_ICPR_5;
+    uint32_t ARM_NVIC_ICPR_6;
+    uint32_t ARM_NVIC_ICPR_7;
+};
+
+struct ArmNvicIabrStruct
+{
+    uint32_t ARM_NVIC_IABR_0;
+    uint32_t ARM_NVIC_IABR_1;
+    uint32_t ARM_NVIC_IABR_2;
+    uint32_t ARM_NVIC_IABR_3;
+    uint32_t ARM_NVIC_IABR_4;
+    uint32_t ARM_NVIC_IABR_5;
+    uint32_t ARM_NVIC_IABR_6;
+    uint32_t ARM_NVIC_IABR_7;
+};
+
+struct ArmNvicIprStruct
+{
+    uint32_t ARM_NVIC_Ipr_0;
+    uint32_t ARM_NVIC_Ipr_1;
+    uint32_t ARM_NVIC_Ipr_2;
+    uint32_t ARM_NVIC_Ipr_3;
+    uint32_t ARM_NVIC_Ipr_4;
+    uint32_t ARM_NVIC_Ipr_5;
+    uint32_t ARM_NVIC_Ipr_6;
+    uint32_t ARM_NVIC_Ipr_7;
+};
+
+const uint32_t *    const NVIC_ICTR     =   reinterpret_cast<uint32_t*>(ICTR_BASE_ADDRESS);
+ArmNvicIserStruct * const NVIC_ISER     =   reinterpret_cast<ArmNvicIserStruct*>(NVIC_ISER_0_7_BASE_ADDRESS);
+ArmNvicIsprStruct * const NVIC_ISPR     =   reinterpret_cast<ArmNvicIsprStruct*>(NVIC_ISPR_0_7_BASE_ADDRESS);
+ArmNvicIcprStruct * const NVIC_ICPR     =   reinterpret_cast<ArmNvicIcprStruct*>(NVIC_ICPR_0_7_BASE_ADDRESS);
+ArmNvicIabrStruct * const NVIC_IABR     =   reinterpret_cast<ArmNvicIabrStruct*>(NVIC_IABR_0_7_BASE_ADDRESS);
+ArmNvicIprStruct *  const NVIC_IPR      =   reinterpret_cast<ArmNvicIprStruct*>(NVIC_IPR_0_7_BASE_ADDRESS);
+
+
+//STM
 struct RccStruct
 {
     uint32_t CR;
